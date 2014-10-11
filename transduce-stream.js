@@ -1,4 +1,4 @@
-var _r = require('underscore-transducer'),
+var _r = require('transduce-string'),
     util = require('util'),
     Transform = require('stream').Transform,
     transform, stream;
