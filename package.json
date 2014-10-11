@@ -1,6 +1,6 @@
 {
   "name": "transduce-stream",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Transform Stream with Transducers",
   "main": "transduce-stream.js",
   "scripts": {
@@ -24,7 +24,7 @@
   "homepage": "http://simplectic.com/projects/transduce-stream/",
   "dependencies": {
     "underscore-transducer": "~0.0.6",
-    "transduce-string": "0.0.1"
+    "transduce-string": "0.0.2"
   },
   "devDependencies": {
     "tape": "~3.0.0",
