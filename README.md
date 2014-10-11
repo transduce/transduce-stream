@@ -17,6 +17,8 @@ process.stdin.resume();
 process.stdin.pipe(stream).pipe(process.stdout);
 
 ```
+
+```bash
 $ echo '33 27 33 444' | node test.js
  1,089.00  729.00  1,089.00  197,136.00
 ```
