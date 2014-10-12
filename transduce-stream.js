@@ -7,29 +7,33 @@ module.exports = _r;
 
 util.inherits(TransduceStream, Transform);
 function TransduceStream(transducer, options){
-  var self = this;
-
-  if(!(self instanceof TransduceStream)){
+  if(!(this instanceof TransduceStream)){
     return new TransduceStream(transducer, options);
   }
-  Transform.call(self, options);
+  Transform.call(this, options);
 
-  self._transformCallback = _r(null, transducer)
-    .each(function(item){self.push(item)})
-    .asCallback();
+  this._transformCallback = transformCallback(this, transducer);
 }
 
 TransduceStream.prototype._transform = function(chunk, enc, cb){
-  var result = this._transformCallback(chunk);
+  var result = this._transformCallback(null, chunk);
   cb();
-  if(result.done){
-    this.end();
-  }
 }
 
 TransduceStream.prototype._flush = function(cb){
   this._transformCallback();
   cb();
+}
+
+function transformCallback(stream, transducer){
+  return _r(null, transducer)
+    .each(function(item){stream.push(item)})
+    .asyncCallback(function(err){
+      if(err){
+        stream.emit('error', err);
+      }
+      stream.end();
+    });
 }
 
 _r.stream = TransduceStream;
