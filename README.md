@@ -16,7 +16,7 @@ process.stdin.pipe(stream(transducer)).pipe(process.stdout);
 Example:
 
 ```javascript
-var stream = require('./'),
+var stream = require('transduce-stream'),
     string = require('transduce-string'),
     array = require('transduce-array'),
     transducers = require('transducers-js');
