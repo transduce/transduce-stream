@@ -1,6 +1,6 @@
 {
   "name": "transduce-stream",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Transform Stream with Transducers",
   "main": "transduce-stream.js",
   "scripts": {
@@ -8,23 +8,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinbeaty/transduce-stream"
+    "url": "https://github.com/transduce/transduce-stream"
   },
   "keywords": [
     "stream",
-    "underscore",
     "transducer",
     "reactive"
   ],
   "author": "Kevin Beaty",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kevinbeaty/transduce-stream/issues"
+    "url": "https://github.com/transduce/transduce-stream/issues"
   },
-  "homepage": "http://simplectic.com/projects/transduce-stream/",
+  "homepage": "https://github.com/transduce/transduce-stream",
   "dependencies": {
-    "underscore-transducer": "0.0.9",
-    "transduce-string": "0.0.4"
+    "transduce-protocol": "0.0.2",
+    "transduce-push": "0.0.2"
   },
   "devDependencies": {
     "tape": "~3.0.0",
