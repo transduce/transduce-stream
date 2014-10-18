@@ -1,5 +1,12 @@
 ## Transduce Stream
 
-All Development moved to [transduce/transduce-stream][1]
+Transform node.js streams with transducers.
 
-[1]: https://github.com/transduce/transduce-stream
+```javascript
+var stream = require('transduce-stream');
+
+var transducer = // create transducer with transducers-js or transducers.js
+
+process.stdin.resume();
+process.stdin.pipe(stream(transducer)).pipe(process.stdout);
+```
