@@ -1,6 +1,5 @@
 var compose = require('transduce-protocol').compose,
-    asyncCallback = require('transduce-push').asyncCallback,
-    forEach = require('transduce-array').forEach,
+    push = require('transduce-push'),
     util = require('util'),
     Transform = require('stream').Transform,
     transform, stream;
@@ -28,8 +27,8 @@ TransduceStream.prototype._flush = function(cb){
 }
 
 function transformCallback(stream, transducer){
-  var xf = compose(transducer, forEach(function(item){stream.push(item)}));
-  return asyncCallback(xf, stream.destroy.bind(stream));
+  var xf = compose(transducer, push.tap(function(result, item){stream.push(item)}));
+  return push.asyncCallback(xf, stream.destroy.bind(stream));
 }
 
 // from https://github.com/rvagg/through2
