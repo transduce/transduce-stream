@@ -1,3 +1,4 @@
+"use strict";
 var compose = require('transduce-protocol').compose,
     push = require('transduce-push'),
     util = require('util'),
@@ -19,15 +20,15 @@ function TransduceStream(transducer, options){
 TransduceStream.prototype._transform = function(chunk, enc, cb){
   var result = this._transformCallback(null, chunk);
   cb();
-}
+};
 
 TransduceStream.prototype._flush = function(cb){
   this._transformCallback();
   cb();
-}
+};
 
 function transformCallback(stream, transducer){
-  var xf = compose(transducer, push.tap(function(result, item){stream.push(item)}));
+  var xf = compose(transducer, push.tap(function(result, item){stream.push(item);}));
   return push.asyncCallback(xf, stream.destroy.bind(stream));
 }
 
@@ -41,4 +42,4 @@ TransduceStream.prototype.destroy = function(err){
     if(err) self.emit('error', err);
     self.emit('close');
   });
-}
+};

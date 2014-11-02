@@ -1,3 +1,4 @@
+"use strict";
 var stream = require('../'),
     Readable = require('stream').Readable,
     Writable = require('stream').Writable,
@@ -20,7 +21,7 @@ function writeArray(t, expected){
   write._write = function(chunk, enc, cb){
     arr.push(''+chunk);
     cb();
-  }
+  };
   write.on('finish', function(){
     t.deepEqual(arr, expected);
   });
@@ -35,7 +36,7 @@ test('Square', function(t) {
   t.plan(1);
   var trans = transduce.compose(
     string.words(),
-    transduce.map(function(x){return (+x * +x)+' '}),
+    transduce.map(function(x){return (+x * +x)+' ';}),
     string.words());
   pipe(trans, ['2 4', '  6 ', '8  1', '0 11'], t, ['4', '16', '36', '64', '100', '121']);
 });
