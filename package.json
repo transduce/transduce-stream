@@ -1,6 +1,6 @@
 {
   "name": "transduce-stream",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Transform Stream with Transducers",
   "main": "transduce-stream.js",
   "scripts": {
@@ -22,15 +22,15 @@
   },
   "homepage": "https://github.com/transduce/transduce-stream",
   "dependencies": {
-    "transduce-protocol": "0.0.6",
-    "transduce-push": "0.0.6"
+    "transduce-util": "0.0.2",
+    "transduce-push": "0.0.7"
   },
   "devDependencies": {
     "tape": "~3.0.0",
-    "transduce": "0.0.10",
+    "transduce": "0.0.12",
     "transducers-js": "~0.4.135",
     "transducers.js": "~0.2.3",
-    "transduce-string": "0.0.7",
-    "transduce-array": "0.0.6"
+    "transduce-string": "0.0.8",
+    "transduce-array": "0.0.8"
   }
 }
