@@ -4,7 +4,7 @@ var stream = require('../'),
     Writable = require('stream').Writable,
     string = require('transduce-string'),
     push = require('transduce-push'),
-    transduce = require('transduce'),
+    transduce = require('any-transduce'),
     test = require('tape');
 
 function readArray(source){
