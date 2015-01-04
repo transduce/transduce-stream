@@ -28,7 +28,7 @@
   "devDependencies": {
     "tape": "~3.0.0",
     "any-transduce": "~0.2.0",
-    "transduce": "~0.2.0",
+    "transduce": "~0.3.0",
     "transducers-js": "~0.4.135",
     "transducers.js": "~0.2.3",
     "transduce-string": "~0.1.0",
