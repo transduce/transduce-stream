@@ -1,7 +1,7 @@
 "use strict";
-var compose = require('transduce-compose'),
-    push = require('transduce-push'),
+var push = require('transduce-push'),
     util = require('util'),
+    compose = require('transduce-util').compose,
     Transform = require('stream').Transform,
     transform, stream;
 
