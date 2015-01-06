@@ -18,8 +18,8 @@ Example:
 
 ```javascript
 var stream = require('./'),
-    string = require('transduce-string'),
-    array = require('transduce-array'),
+    string = require('transduce/string'),
+    array = require('transduce/array'),
     transducers = require('transducers-js');
 
 var trans = transducers.comp(
@@ -38,7 +38,7 @@ $ echo '1 12 7 41' | node square.js
 1 144 49 1681
 ```
 
-This example makes use of [transduce-array][1] to add a new line at the end of the stream and [transdce-string][2] to split the input on words (can also split on lines, chars and separators or RegExps).
+This example makes use of [transduce/array][1] to add a new line at the end of the stream and [transdce/string][2] to split the input on words (can also split on lines, chars and separators or RegExps).
 
 Or using [underscore-transducer][6].
 
@@ -75,8 +75,7 @@ EOT
 ```
 
 
-[1]: https://github.com/transduce/transduce-array
-[2]: https://github.com/transduce/transduce-string
+[1]: https://github.com/transduce/transduce
 [3]: https://github.com/cognitect-labs/transducers-js
 [4]: https://github.com/jlongster/transducers.js
 [5]: https://github.com/transduce/transduce-protocol
