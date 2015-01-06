@@ -2,8 +2,8 @@
 var stream = require('../'),
     Readable = require('stream').Readable,
     Writable = require('stream').Writable,
-    string = require('transduce-string'),
-    push = require('transduce-push'),
+    string = require('transduce/string'),
+    push = require('transduce/push'),
     transduce = require('any-transduce'),
     test = require('tape');
 
