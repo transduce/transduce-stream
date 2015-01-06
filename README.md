@@ -3,7 +3,7 @@
 
 Transform Node.js streams with transducers.
 
-Works with [transducers-js][3] or [transducers.js][4] or any library conforming to [transduce-protocol][5].
+Works with [transducers-js][3] or [transducers.js][4] or [transduce][5].
 
 ```javascript
 var stream = require('transduce-stream');
@@ -38,7 +38,7 @@ $ echo '1 12 7 41' | node square.js
 1 144 49 1681
 ```
 
-This example makes use of [transduce/array][1] to add a new line at the end of the stream and [transdce/string][2] to split the input on words (can also split on lines, chars and separators or RegExps).
+This example makes use of [transduce/array][1] to add a new line at the end of the stream and [transduce/string][2] to split the input on words (can also split on lines, chars and separators or RegExps).
 
 Or using [underscore-transducer][6].
 
@@ -75,8 +75,9 @@ EOT
 ```
 
 
-[1]: https://github.com/transduce/transduce
+[1]: https://github.com/transduce/transduce#array
+[2]: https://github.com/transduce/transduce#string
 [3]: https://github.com/cognitect-labs/transducers-js
 [4]: https://github.com/jlongster/transducers.js
-[5]: https://github.com/transduce/transduce-protocol
+[5]: https://github.com/transduce/transduce
 [6]: https://github.com/kevinbeaty/underscore-transducer
