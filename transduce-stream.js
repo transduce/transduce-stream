@@ -1,7 +1,7 @@
 "use strict";
 var tap = require('transduce/push/tap'),
     asyncCallback = require('transduce/push/asyncCallback'),
-    compose = require('transduce/util/compose'),
+    compose = require('transduce/base/compose'),
     util = require('util'),
     Transform = require('stream').Transform,
     transform, stream;
