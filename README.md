@@ -6,29 +6,27 @@ Transform Node.js streams with transducers.
 Works with [transducers-js][3] or [transducers.js][4] or [transduce][5].
 
 ```javascript
-var stream = require('transduce-stream');
+var stream = require('transduce-stream')
 
 var transducer = // create transducer with transducers-js or transducers.js
 
-process.stdin.resume();
-process.stdin.pipe(stream(transducer)).pipe(process.stdout);
+process.stdin.resume()
+process.stdin.pipe(stream(transducer)).pipe(process.stdout)
 ```
 
 Example:
 
 ```javascript
 var stream = require('./'),
-    string = require('transduce/string'),
-    array = require('transduce/array'),
-    transducers = require('transducers-js');
+    tr = require('transduce') //  or transducers-js or transducers.js
 
-var trans = transducers.comp(
-  string.words(),
+var trans = tr.compose(
+  tr.string.words(),
   transducers.map(function(x){return (+x * +x) + ' '}),
-  array.push('\n'));
+  tr.array.push('\n'))
 
-process.stdin.resume();
-process.stdin.pipe(stream(trans)).pipe(process.stdout);
+process.stdin.resume()
+process.stdin.pipe(stream(trans)).pipe(process.stdout)
 ```
 
 Run to get the squares of numbers passed on `stdin`.
@@ -44,8 +42,8 @@ Or using [underscore-transducer][6].
 
 ```javascript
 // test.js
-var _r = require('underscore-transducer');
-    stream = require('transduce-stream');
+var _r = require('underscore-transducer')
+    stream = require('transduce-stream')
 
 var transducer = _r()
   .words()
@@ -53,10 +51,10 @@ var transducer = _r()
   .uniq()
   .take(4)
   .push('\n')
-  .compose();
+  .compose()
 
-process.stdin.resume();
-process.stdin.pipe(stream(transducer)).pipe(process.stdout);
+process.stdin.resume()
+process.stdin.pipe(stream(transducer)).pipe(process.stdout)
 ```
 
 Run this from the terminal to calculate a formatted sequence of the first 4 unique squared values.
