@@ -8,7 +8,7 @@ Works with [transducers-js][3] or [transducers.js][4] or [transduce][5].
 ```javascript
 var stream = require('transduce-stream')
 
-var transducer = // create transducer with transducers-js or transducers.js
+var transducer = // create transducer with transduce, transducers-js or transducers.js
 
 process.stdin.resume()
 process.stdin.pipe(stream(transducer)).pipe(process.stdout)
@@ -18,11 +18,11 @@ Example:
 
 ```javascript
 var stream = require('./'),
-    tr = require('transduce') //  or transducers-js or transducers.js
+    tr = require('transduce') // or transducers-js or transducers.js
 
 var trans = tr.compose(
   tr.string.words(),
-  transducers.map(function(x){return (+x * +x) + ' '}),
+  tr.map(function(x){return (+x * +x) + ' '}),
   tr.array.push('\n'))
 
 process.stdin.resume()

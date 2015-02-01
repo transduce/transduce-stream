@@ -1,12 +1,20 @@
 "use strict"
-var tap = require('transduce/push/tap'),
-    asyncCallback = require('transduce/push/asyncCallback'),
-    compose = require('transduce/base/compose'),
-    util = require('util'),
-    Transform = require('stream').Transform,
-    transform, stream
+var util = require('util'),
+    Transform = require('stream').Transform
 
 module.exports = TransduceStream
+
+var streamTransformer = {
+  init: function(){},
+  step: function(stream, item){
+    if(!stream._destroyed){
+      stream.push(item)
+    }
+    return stream
+  },
+  result: function(stream){return stream}
+}
+
 
 util.inherits(TransduceStream, Transform)
 function TransduceStream(transducer, options){
@@ -15,32 +23,37 @@ function TransduceStream(transducer, options){
   }
   Transform.call(this, options)
 
-  this._transformCallback = transformCallback(this, transducer)
+  this._transformXf = transducer(streamTransformer)
 }
 
 TransduceStream.prototype._transform = function(chunk, enc, cb){
-  var result = this._transformCallback(null, chunk)
+  if(!this._destroyed){
+    var stream = this._transformXf.step(this, chunk)
+    if(stream.__transducers_reduced__){
+      this._transformXf.result(this)
+      this.destroy()
+    }
+  }
   cb()
 }
 
 TransduceStream.prototype._flush = function(cb){
-  this._transformCallback()
+  if(!this._destroyed){
+    this._transformXf.result(this)
+    this.destroy()
+  }
   cb()
-}
-
-function transformCallback(stream, transducer){
-  var xf = compose(transducer, tap(function(result, item){stream.push(item)}))
-  return asyncCallback(xf, stream.destroy.bind(stream))
 }
 
 // from https://github.com/rvagg/through2
 TransduceStream.prototype.destroy = function(err){
-  if(this._destroyed) return
-  this._destroyed = true
+  if(!this._destroyed){
+    this._destroyed = true
 
-  var self = this
-  process.nextTick(function(err){
-    if(err) self.emit('error', err)
-    self.emit('close')
-  })
+    var self = this
+    process.nextTick(function(){
+      if(err) self.emit('error', err)
+      self.emit('close')
+    })
+  }
 }

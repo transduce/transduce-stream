@@ -1,6 +1,6 @@
 {
   "name": "transduce-stream",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Transform Stream with Transducers",
   "main": "transduce-stream.js",
   "scripts": {
@@ -21,12 +21,10 @@
     "url": "https://github.com/transduce/transduce-stream/issues"
   },
   "homepage": "https://github.com/transduce/transduce-stream",
-  "dependencies": {
-    "transduce": "~0.5.0"
-  },
   "devDependencies": {
     "tape": "~3.0.3",
     "any-transduce": "~0.4.1",
+    "transduce": "~0.5.1",
     "transducers-js": "~0.4.135",
     "transducers.js": "~0.2.3"
   }
