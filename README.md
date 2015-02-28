@@ -38,11 +38,11 @@ $ echo '1 12 7 41' | node square.js
 
 This example makes use of [transduce/array][1] to add a new line at the end of the stream and [transduce/string][2] to split the input on words (can also split on lines, chars and separators or RegExps).
 
-Or using [underscore-transducer][6].
+Or using [underarm][6].
 
 ```javascript
 // test.js
-var _r = require('underscore-transducer')
+var _r = require('underarm')
     stream = require('transduce-stream')
 
 var transducer = _r()
@@ -78,4 +78,4 @@ EOT
 [3]: https://github.com/cognitect-labs/transducers-js
 [4]: https://github.com/jlongster/transducers.js
 [5]: https://github.com/transduce/transduce
-[6]: https://github.com/kevinbeaty/underscore-transducer
+[6]: https://github.com/kevinbeaty/underarm
