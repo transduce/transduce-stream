@@ -23,6 +23,7 @@
   "homepage": "https://github.com/transduce/transduce-stream",
   "devDependencies": {
     "any-transduce": "^0.4.2",
+    "promise": "^6.1.0",
     "tape": "^4.0.0",
     "transduce": "^0.8.0",
     "transducers-js": "^0.4.158",
