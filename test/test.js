@@ -3,7 +3,7 @@ var stream = require('../'),
     Readable = require('stream').Readable,
     Writable = require('stream').Writable,
     string = require('transduce/string'),
-    push = require('transduce/push'),
+    tap = require('transduce/transducers/tap'),
     transduce = require('any-transduce'),
     test = require('tape')
 
@@ -47,7 +47,7 @@ test('Strings: join', function(t) {
 
   var trans = transduce.compose(
         string.join(''),
-        push.tap(function(result, item){
+        tap(function(result, item){
           t.equal(item, 'foobar', 'basic join')
         }))
   readArray(['', 'foo', 'bar']).pipe(stream(trans))

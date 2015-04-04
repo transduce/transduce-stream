@@ -4,17 +4,15 @@ var util = require('util'),
 
 module.exports = TransduceStream
 
-var streamTransformer = {
-  init: function(){},
-  step: function(stream, item){
+var streamTransformer = {}
+streamTransformer['@@transducer/init'] = function(){}
+streamTransformer['@@transducer/step'] = function(stream, item){
     if(!stream._destroyed){
       stream.push(item)
     }
     return stream
-  },
-  result: function(stream){return stream}
-}
-
+  }
+streamTransformer['@@transducer/result'] = function(stream){return stream}
 
 util.inherits(TransduceStream, Transform)
 function TransduceStream(transducer, options){
@@ -28,9 +26,9 @@ function TransduceStream(transducer, options){
 
 TransduceStream.prototype._transform = function(chunk, enc, cb){
   if(!this._destroyed){
-    var stream = this._transformXf.step(this, chunk)
-    if(stream.__transducers_reduced__){
-      this._transformXf.result(this)
+    var stream = this._transformXf['@@transducer/step'](this, chunk)
+    if(stream && stream['@@transducer/reduced']){
+      this._transformXf['@@transducer/result'](this)
       this.destroy()
     }
   }
@@ -39,7 +37,7 @@ TransduceStream.prototype._transform = function(chunk, enc, cb){
 
 TransduceStream.prototype._flush = function(cb){
   if(!this._destroyed){
-    this._transformXf.result(this)
+    this._transformXf['@@transducer/result'](this)
     this.destroy()
   }
   cb()
