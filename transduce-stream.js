@@ -51,7 +51,7 @@ TransduceStream.prototype.destroy = function(err){
     var self = this
     process.nextTick(function(){
       if(err) self.emit('error', err)
-      self.emit('close')
+      self.end()
     })
   }
 }

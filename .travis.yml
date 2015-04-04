@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "iojs"
+  - "0.10"
 env:
   - TRANSDUCE_IMPL=transduce
   - TRANSDUCE_IMPL=transducers-js
