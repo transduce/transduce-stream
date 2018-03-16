@@ -1,7 +1,7 @@
 "use strict"
 var stream = require('../'),
-    Readable = require('stream').Readable,
-    Writable = require('stream').Writable,
+    Readable = require('readable-stream').Readable,
+    Writable = require('readable-stream').Writable,
     string = require('transduce/string'),
     tap = require('transduce/transducers/tap'),
     transduce = require('any-transduce'),

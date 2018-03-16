@@ -1,6 +1,6 @@
 "use strict"
 var util = require('util'),
-    Transform = require('stream').Transform
+    Transform = require('readable-stream').Transform
 
 module.exports = TransduceStream
 
