@@ -1,14 +1,16 @@
 "use strict"
 var stream = require('../'),
-    Readable = require('stream').Readable,
-    Writable = require('stream').Writable,
+    Readable = require('readable-stream').Readable,
+    Writable = require('readable-stream').Writable,
     string = require('transduce/string'),
     tap = require('transduce/transducers/tap'),
     transduce = require('any-transduce'),
     test = require('tape')
 
-function readArray(source){
-  var read = new Readable()
+
+function readArray(_source){
+  var source = _source.concat(null),
+      read = new Readable()
   read._read = function(){
       read.push(source.shift())
   }
