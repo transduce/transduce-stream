@@ -7,8 +7,10 @@ var stream = require('../'),
     transduce = require('any-transduce'),
     test = require('tape')
 
-function readArray(source){
-  var read = new Readable()
+
+function readArray(_source){
+  var source = _source.concat(null),
+      read = new Readable()
   read._read = function(){
       read.push(source.shift())
   }
